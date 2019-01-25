@@ -5,19 +5,39 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "normalizr": "3.3.0",
-    "ramda": "0.26.1",
+    "@babel/runtime": "^7.3.1",
+    "normalizr": "^3.3.0",
+    "prop-types": "^15.6.2",
+    "ramda": "^0.26.1",
     "react": "16.5.2",
     "react-dom": "16.5.2",
-    "react-inspector": "2.3.1",
-    "react-scripts": "2.0.3"
+    "react-error-boundary": "^1.2.3",
+    "react-inspector": "^2.3.1",
+    "react-particles-js": "^2.4.2",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.3",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-saga": "^1.0.0",
+    "redux-saga-thunk": "^0.7.3",
+    "uptrend-redux-modules": "^0.21.0",
+    "uptrend-scripts": "^0.43.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/helpers": "^7.3.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "uptrend-scripts lint",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

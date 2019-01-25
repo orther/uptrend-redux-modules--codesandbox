@@ -1,24 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Inspector from "react-inspector";
-import { normalize } from "normalizr";
+import React from 'react'
+import {render} from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
+import ErrorBoundary from 'react-error-boundary'
+import App from './components/App'
 
-import { locationAnswers } from "./schema";
-import locationAnswersRespData from "./data";
+import configureStore from './store/configure'
+// import {createApi} from './services/api'
 
-const normalizedData = normalize(locationAnswersRespData, locationAnswers);
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Input Data (api resp data)</h1>
-      <Inspector data={locationAnswersRespData} expandLevel={3} />
-
-      <h1>Normalized Data (entites data)</h1>
-      <Inspector data={normalizedData} expandLevel={5} />
-    </div>
-  );
+const services = {
+  // api: createApi(),
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const store = configureStore({}, services)
+
+const renderApp = () => (
+  <ErrorBoundary>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      ,
+    </Provider>
+  </ErrorBoundary>
+)
+
+const root = document.getElementById('root')
+render(renderApp(), root)

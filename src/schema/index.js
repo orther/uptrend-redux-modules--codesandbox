@@ -1,27 +1,27 @@
-import R from "ramda";
-import { schema } from "normalizr";
+import * as R from 'ramda'
+import {schema} from 'normalizr'
 
-import { makeCompositeKey } from "./util";
+import {makeCompositeKey} from './util'
 
 export const locationWorksheetAnswer = new schema.Entity(
-  "locationWorksheetAnswer",
+  'locationWorksheetAnswer',
   {},
   {
     idAttribute: value => {
-      const { parentId, worksheetUuid } = value;
-      return makeCompositeKey(parentId, worksheetUuid);
-    }
-  }
-);
+      const {parentId, worksheetUuid} = value
+      return makeCompositeKey(parentId, worksheetUuid)
+    },
+  },
+)
 
 export const locationWorksheetAnswerMap = new schema.Values(
-  locationWorksheetAnswer
-);
+  locationWorksheetAnswer,
+)
 
 export const locationAnswers = new schema.Entity(
-  "locationAnswers",
+  'locationAnswers',
   {
-    worksheetAnswers: locationWorksheetAnswerMap
+    worksheetAnswers: locationWorksheetAnswerMap,
   },
   {
     processStrategy: entityValue => {
@@ -31,15 +31,15 @@ export const locationAnswers = new schema.Entity(
         (value, key) => ({
           answers: value,
           parentId: entityValue.parentId,
-          worksheetUuid: key
+          worksheetUuid: key,
         }),
-        entityValue.answers.worksheets
-      );
+        entityValue.answers.worksheets,
+      )
 
       return {
         ...entityValue,
-        worksheetAnswers
-      };
-    }
-  }
-);
+        worksheetAnswers,
+      }
+    },
+  },
+)
